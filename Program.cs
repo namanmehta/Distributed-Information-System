@@ -51,17 +51,33 @@ namespace Assignment1_S19
             try
             {
                 // Write your code here
-                if (y > x)
+                if(y > x)
                 {
-                    Console.Write("2 3 ");  // initializing as 2 and 3 are prime numbers
-                    for (int i = x; i < y + 1; i++)
+                    //Console.Write(i + " ");
+                    //}
+                    bool isPrimeNumber = true;          //using parameter check for conditional flow
+                    for (int i = 2; i <= y; i++)        
                     {
-                        if (i % 2 != 0 && i % 3 != 0)  // checking the numbers through logic: if number is not divided by 2 and 3 then its a prime number
+                        for (int j = 2; j <= y; j++)
                         {
-                            Console.Write(i + " ");
+
+                            if (i != j && i % j == 0)
+                            {
+                                isPrimeNumber = false;      //breaking the flow for calling local function to print prime values
+                                break;
+                            }
+
                         }
+                        if (isPrimeNumber)
+                        {
+                            Console.Write("\t" + i);    //printing all the values which are prime
+                        }
+                        isPrimeNumber = true;
+
+
                     }
                 }
+
             }
             catch
             {
