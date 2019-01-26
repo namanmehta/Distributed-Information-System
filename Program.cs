@@ -20,7 +20,7 @@ namespace Assignment1_S19
 
 
             long n2 = 15;
-            StringBuilder r2 = decimalToBinary(n2);
+            long r2 = decimalToBinary(n2);
 
             Console.WriteLine("\nBinary conversion of the decimal number " + n2 + " is: " + r2);
             Console.ReadKey();
@@ -131,36 +131,41 @@ namespace Assignment1_S19
             return y;
         }
 
-        public static StringBuilder decimalToBinary(long n)
+        public static long decimalToBinary(long n)
         {
             try
             {
                 // Write your code here
                 long[] results = new long[n];
                 long i = 0;
-                
+                long temp = 1;
+                long binary = 0;
+
                 long[] resultFinal = new long[n];
 
-                List<string> output = new List<string>();
+                //string ans="";
+                //long ansF;
+                
 
-                StringBuilder numberList = new StringBuilder();
-
+                
                 while (n > 0)
                 {
                     long test = n % 2;      //logic for taking the right most digit
                     long div = n / 2;       // getting the quetient 
-                    results[i] = test;
-                    i++;
+                    //results[i] = test;
+                    //ans += Convert.ToString(test);
+                    binary = binary + test * temp;
+
+                    temp = temp * 10;            // edited logic for returning in long type data type        
+                    //i++;
                     n = div;
-                }
-                for (long j = i - 1; j >= 0; j--)
-                {
-                    //Console.Write(results[j]);
-                    numberList.Append(results[j]);      //appending result into stringbuilder type 
-
+                    
                 }
 
-                return numberList; // return value needs to be sorted
+                
+                               
+
+                return binary; 
 
 
             }
@@ -168,8 +173,9 @@ namespace Assignment1_S19
             {
                 Console.WriteLine("Exception occured while computing decimalToBinary()");
             }
-            StringBuilder a1 = new StringBuilder();
-            return a1;
+            
+            
+            return 0;
         }
 
         public static long binaryToDecimal(long n)
